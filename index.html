@@ -57,8 +57,8 @@
         <a href="#contact" class="hover:opacity-80">Контакты</a>
       </nav>
       <div class="flex items-center gap-2">
-        <a href="https://www.behance.net/ksushaf" target="_blank" class="px-3 py-2 rounded-xl border border-rose-300 text-rose-700 hover:bg-rose-50">Behance</a>
-        <button onclick="window.print()" class="px-3 py-2 rounded-xl bg-rose-500 text-white shadow hover:bg-rose-600">PDF</button>
+        <a class="inline-flex items-center justify-center px-3 py-2 rounded-xl border border-rose-300 text-rose-700 hover:bg-rose-50 active:scale-[.99] text-sm">Behance</a>
+        <button onclick="window.print()" class="px-3 py-2 rounded-xl bg-rose-500 text-white shadow hover:bg-rose-600 text-sm">PDF</button>
       </div>
     </div>
   </header>
@@ -72,9 +72,62 @@
           Делаю аккуратные, дружелюбные интерфейсы: адаптив, дизайн‑система и состояния (hover/focus/error).
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
-          <a href="mailto:fedyunenskaya.ksenia@yandex.ru" class="px-4 py-2 rounded-2xl bg-stone-900 text-white hover:opacity-90">Email</a>
-          <a href="https://t.me/ksusha_fff" target="_blank" class="px-4 py-2 rounded-2xl border border-stone-300 hover:bg-stone-50">Telegram</a>
-          <a href="https://www.behance.net/ksushaf" target="_blank" class="px-4 py-2 rounded-2xl border border-rose-300 text-rose-700 hover:bg-rose-50">Behance</a>
+          
+
+<div class="mt-3 flex flex-wrap items-center gap-3">
+  <div class="text-sm text-stone-700">Почта:</div>
+  <div class="flex items-center gap-2 rounded-full border border-rose-200 bg-rose-50/80 px-3 py-1 shadow-sm">
+    <span id="emailText" class="font-mono text-sm text-rose-700 select-all">fedyunenskaya.ksenia@yandex.ru</span>
+    <button id="copyEmailBtn" type="button"
+      class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs bg-rose-500 text-white shadow hover:bg-rose-600 active:scale-[.98]">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="2"/>
+        <rect x="4" y="4" width="11" height="11" rx="2" stroke="currentColor" stroke-width="2" opacity=".65"/>
+      </svg>
+      Скопировать
+    </button>
+    <span id="copiedToast" class="ml-1 text-emerald-600 text-xs hidden">Скопировано ✔</span>
+  </div>
+</div>
+<div class="mt-1 text-xs text-stone-500">
+  Написать через:
+  <a class="underline hover:text-stone-700" target="_blank" rel="noopener" href="https://mail.google.com/mail/?view=cm&fs=1&to=fedyunenskaya.ksenia@yandex.ru">Gmail</a> ·
+  <a class="underline hover:text-stone-700" target="_blank" rel="noopener" href="https://mail.yandex.ru/compose?to=fedyunenskaya.ksenia@yandex.ru">Яндекс.Почта</a> ·
+  <a class="underline hover:text-stone-700" target="_blank" rel="noopener" href="https://outlook.live.com/owa/?path=/mail/action/compose&to=fedyunenskaya.ksenia@yandex.ru">Outlook</a>
+</div>
+<script>
+  (function() {
+    const btn = document.getElementById('copyEmailBtn');
+    const code = document.getElementById('emailText');
+    const toast = document.getElementById('copiedToast');
+    if (btn && code) {
+      btn.addEventListener('click', async () => {
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(code.textContent.trim());
+          } else {
+            const range = document.createRange();
+            range.selectNode(code);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+            document.execCommand('copy');
+            sel.removeAllRanges();
+          }
+          if (toast) {
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 1800);
+          }
+        } catch (e) { console.warn(e); }
+      });
+    }
+  })();
+</script>
+
+<div class="mt-6 md:mt-8 w-full flex flex-wrap items-center gap-3 justify-start text-left ml-0 mr-0 sm:justify-start md:justify-start">
+  <a class="inline-flex items-center justify-center px-4 py-2 rounded-full border border-stone-300 text-stone-700 hover:bg-stone-50 active:scale-[.99]">Telegram</a>
+  <a class="inline-flex items-center justify-center px-4 py-2 rounded-full border border-rose-300 text-rose-700 hover:bg-rose-50 active:scale-[.99]">Behance</a>
+</div>
         </div>
       </div>
       <div class="justify-self-end w-full md:max-w-sm">
@@ -146,7 +199,7 @@
             <li>Единый UI‑kit и сетка</li>
             <li>Мобильные экраны и состояния CTA</li>
           </ul>
-          <a href="https://www.behance.net/gallery/232793579/medved-kod-Medical-website" target="_blank" class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-rose-500 text-white hover:bg-rose-600">Смотреть на Behance</a>
+          <a href="https://www.behance.net/gallery/232793579/medved-kod-Medical-website" target="_blank" rel="noopener" target="_blank" rel="noopener" target="_blank" class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-rose-500 text-white hover:bg-rose-600">Смотреть на Behance</a>
         </div></div>
           </div>
         
@@ -194,10 +247,46 @@
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAIAAADTED8xAAAElUlEQVR42u3dwY6cMBBF0SHi/395so7UvSjlFWXsc9YJDfRcgYzbXL+/vz9wqj9OAQIAAYAAQAAgABAACAAEAAIAAYAAQAAgABAAvNNd/Q/XdS1+SKVfOKQOJ/Khrb/NiHzoZt++KwBugUAAIAAQAAgADnFHtjKytkpkSG5kz6sf2nqkHzde3cP3/gG4AuAWCAQAAgABgABAALC5u3Xr6w/Vp2Yml0bTq6fl43bWn5n8ij8AVwDcAoEAQAAgABAACAA2dzsFH7UO1bc+ZKge0eHvyXUFwC0QCAAEAAIAAYAAYHOeA3w2MlRf2pnIkwpcARAACAAEAAIAAcAJeodBlxp6ax2p7NvDkY23DuC6AoAAQAAgABAACAAEAM/JPAd4xVLdkSOKDGxXNx5Zez21VvtmfwCuALgFAgGAAEAAIAAQAGzuOny1jPXH+0ec81fhCoBbIBAACAAEAAIAAcDmyr8HeP6Vnal1wJ+fVT+y8dZznjoiVwAQAAgABAACAAHAk66Reb+tG4/sTOvM5Mh06NQIY+RII+d25M2crgC4BQIBgABAACAAEABs7krNqo14fji5da5162lZ54so/82F9jyyk64AuAUCAYAAQAAgABAAbO4e+dTWCfEji4xHFhf5pnXNlefP4VJfnCsAboFAACAAEAAIAAQAm5t5TWrreP/IIuORPS9tZ6l3sLb+kKN1uSRXANwCgQBAACAAEACc4BqZmvvNOi8VHJmaO8JbIsEtEAgABAACAAGAAGBn93t3/fBJxdXTEjmi96654goAAgABgABAAAjAKUAAcKhr/Rnb5UNaZnn01J4f8prUkR8buALgFggEAAIAAYAAQACwuczvAUaWhVl/6Z7qaYmcrpF5/6V/v9SjJ1cA3AKBAEAAIAAQAJxgZlmUyAhmZEjuvQO4rZOHv20ksuep0eHIaz9dAXALBAIAAYAAQAAgANhc72tSSxv5mVhle2Rq7nv3vPULjZwuzwFAACAAEAAIAAQAAoB/lH8P8PzSHZFp4j8TU/yrnzjystHI2uvvXWTfFQC3QCAAEAAIAAQAAoDNlZ8DlAa8W9cHb10evfVhQmQF89TQe+tSP5HDb33I4AqAWyAQAAgABAACgBNc753IWj7UzgVdPooMd/6EZiz//yd2n/OR1WJcAXALBAIAAYAAQAAgANhcZjr0UkpzrUem4I48e4mMvi81Szzyoa4AuAUCAYAAQAAgABAAbO6ObOUVLxttXcG8dTT9+Vn1rV90au31yBfqCoBbIBAACAAEAAIAAcDm7tatj6z0UtpOaq556d+3jqaPDNW3fqF+DwBugUAAIAAQAAgA/tN9zqE+v6DLyBhrRGqFko//3nRocAsEAgABgABAACAAeM5BzwEiLxtdZ3X4kT3Z76W6rgC4BQIBgABAACAAEABsrvc5wPrDxq1rrlRFfj/w3tehjuyMKwBugUAAIAAQAAgABACbyzwHWGeWfGonv40xr7+yefWIIt/dK/4AXAFAACAAEAAIAAHAsa79FroAVwAQAAgABAACAAGAAEAAIAAEAAIAAYAAQAAgANjeX/IXO/3ZDiDrAAAAAElFTkSuQmCC" alt="QR Behance" class="w-28 h-28 rounded-2xl border border-stone-200 shadow"/>
           </div>
           <div class="flex flex-wrap gap-3">
-            <a href="mailto:fedyunenskaya.ksenia@yandex.ru" class="px-4 py-2 rounded-2xl bg-stone-900 text-white hover:opacity-90">Email</a>
-            <a href="https://t.me/ksusha_fff" target="_blank" class="px-4 py-2 rounded-2xl border border-stone-300 hover:bg-stone-50">Telegram</a>
-            <a href="https://www.behance.net/ksushaf" target="_blank" class="px-4 py-2 rounded-2xl border border-rose-300 text-rose-700 hover:bg-rose-50">Behance</a>
-            <button onclick="window.print()" class="px-4 py-2 rounded-2xl bg-rose-500 text-white hover:bg-rose-600">Сохранить как PDF</button>
+            
+
+<span id="copiedToast" class="ml-1 text-emerald-600 text-xs hidden">Скопировано ✔</span>
+</div>
+
+<script>
+  (function() {
+    const btn = document.getElementById('copyEmailBtn');
+    const code = document.getElementById('emailText');
+    const toast = document.getElementById('copiedToast');
+    if (btn && code) {
+      btn.addEventListener('click', async () => {
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(code.textContent.trim());
+          } else {
+            // Fallback for older browsers
+            const range = document.createRange();
+            range.selectNode(code);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+            document.execCommand('copy');
+            sel.removeAllRanges();
+          }
+          if (toast) {
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 2000);
+          }
+        } catch (e) { console.warn(e); }
+      });
+    }
+  })();
+</script>
+</span>
+            <div class="mt-4 flex gap-3 flex-wrap items-center">
+  <a class="inline-flex items-center justify-center px-4 py-2 rounded-full border border-stone-300 text-stone-700 hover:bg-stone-50">Telegram</a>
+  <a class="inline-flex items-center justify-center px-4 py-2 rounded-full border border-rose-300 text-rose-700 hover:bg-rose-50">Behance</a>
+  <button class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-rose-500 text-white shadow hover:bg-rose-600">Сохранить как PDF</button>
+</div>
           </div>
         </div>
       </div>
