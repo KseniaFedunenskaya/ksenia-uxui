@@ -88,19 +88,25 @@
         </p>
 
         <!-- Email -->
-        <div class="mt-5 sm:mt-6 flex flex-wrap items-center gap-3">
+        <div class="mt-5 sm:mt-6 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-2 sm:gap-3 w-full">
           <div class="text-sm text-stone-700">Почта:</div>
-          <div class="flex items-center gap-2 rounded-full border border-rose-200 bg-rose-50/80 px-3 py-1 shadow-sm">
-            <span id="emailText" class="font-mono text-sm text-rose-700 select-all">fedyunenskaya.ksenia@yandex.ru</span>
+
+          <!-- плашка тянется на всю ширину на мобиле -->
+          <div class="w-full sm:w-auto flex items-center gap-2 rounded-full border border-rose-200 bg-rose-50/80 px-3 py-1 shadow-sm">
+            <!-- e-mail ужимается и ставит многоточие -->
+            <span id="emailText" class="min-w-0 grow truncate font-mono text-sm text-rose-700 select-all">
+              fedyunenskaya.ksenia@yandex.ru
+            </span>
+            <!-- кнопка фиксированной ширины -->
             <button id="copyEmailBtn" type="button"
-              class="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs bg-rose-500 text-white shadow hover:bg-rose-600 active:scale-[.98]">
+              class="flex-none inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs bg-rose-500 text-white shadow hover:bg-rose-600 active:scale-[.98]">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="2"/>
                 <rect x="4" y="4" width="11" height="11" rx="2" stroke="currentColor" stroke-width="2" opacity=".65"/>
               </svg>
               Скопировать
             </button>
-            <span id="copiedToast" class="ml-1 text-emerald-600 text-xs hidden">Скопировано ✔</span>
+            <span id="copiedToast" class="flex-none ml-1 text-emerald-600 text-xs hidden">Скопировано ✔</span>
           </div>
         </div>
 
@@ -119,20 +125,21 @@
       </div>
 
       <!-- Photo -->
-      <div class="justify-self-center sm:justify-self-end w-full max-w-[min(92vw,420px)] sm:max-w-sm md:max-w-md">
-        <div class="relative">
-          <span class="absolute -top-2 left-3 sm:-top-3 sm:left-6 z-20 reveal" data-reveal>
-            <span class="inline-block px-4 py-1.5 sm:px-8 sm:py-2 bg-rose-200/100 text-rose-700 rounded-sm shadow rotate-[-2deg] origin-left text-xs sm:text-sm">
-              мечтай • создавай
-            </span>
+    <div class="justify-self-stretch sm:justify-self-end w-full">
+      <!-- центрируем и ограничиваем ширину внутри -->
+      <div class="relative mx-auto max-w-[420px] px-2">
+        <span class="absolute -top-2 left-2 sm:left-6 sm:-top-3 z-20 reveal" data-reveal>
+          <span class="inline-block px-3 py-1 sm:px-8 sm:py-2 bg-rose-200/100 text-rose-700 rounded-sm shadow sm:rotate-[-2deg] origin-left text-xs sm:text-sm">
+            мечтай • создавай
           </span>
+        </span>
 
-          <div class="polaroid-tilt relative z-10 rounded-[22px] sm:rounded-[28px] bg-white shadow-xl p-2.5 sm:p-3 border border-stone-200">
-            <div class="rounded-[16px] sm:rounded-[20px] overflow-hidden aspect-[4/5] sm:aspect-[3/4] bg-gradient-to-br from-rose-100 via-white to-violet-50">
-              <img src="portrait.png" alt="Ксения Федюненская" class="w-full h-full object-cover"/>
-            </div>
-            <div class="mt-2 sm:mt-3 px-2 pb-1 text-center text-sm sm:text-base" style="font-family: Pacifico, cursive;">“улыбаюсь и делаю UI-дизайн”</div>
-          </div>
+    <div class="relative z-10 rounded-[20px] sm:rounded-[28px] bg-white shadow-xl p-2 sm:p-3 border border-stone-200 sm:rotate-[-2deg] will-change-transform">
+      <div class="rounded-[16px] sm:rounded-[20px] overflow-hidden aspect-[4/5] sm:aspect-[3/4] bg-gradient-to-br from-rose-100 via-white to-violet-50">
+        <img src="portrait.png" alt="Ксения Федюненская" class="w-full h-full object-cover"/>
+      </div>
+      <div class="mt-2 sm:mt-3 px-2 pb-1 text-center text-sm sm:text-base" style="font-family: Pacifico, cursive;">“улыбаюсь и делаю UI-дизайн”</div>
+    </div>
 
           <div class="hidden sm:block absolute right-[-16px] bottom-[-18px] sm:right-[-8px] sm:bottom-[-6px] z-30 select-none floaty pointer-events-none scale-90 sm:scale-100" aria-hidden style="filter: drop-shadow(0 8px 18px rgba(0,0,0,.20));">
             <svg width="78" height="78" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
